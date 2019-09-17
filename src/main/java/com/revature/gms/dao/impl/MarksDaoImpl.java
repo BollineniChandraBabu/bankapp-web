@@ -167,6 +167,7 @@ public class MarksDaoImpl implements MarksDao {
 		preparedStatement = null;
 		resultSet = null;
 		List<Marks> marksList=new ArrayList<Marks>();
+		GradesDaoImpl gradesDaoImpl=new GradesDaoImpl();
 		try {
 			connection = DbUtils.getConnection();
 			String sql = "select m.subid,m.marks,s.name,st.regno,st.name from marks as m, subjects as s,students as st where s.id=? and st.regno=m.sid and m.subid=s.id group by m.sid,s.name";
@@ -185,6 +186,7 @@ public class MarksDaoImpl implements MarksDao {
 				marks.setStudent(students);
 				marks.setSubjects(subjects);
 				marks.setMarks(resultSet.getInt("m.marks"));
+				marks.setGrade(gradesDaoImpl.getGrade(marks.getMarks()));
 				marksList.add(marks);
 			}
 		} catch (Exception e) {
@@ -201,6 +203,7 @@ public class MarksDaoImpl implements MarksDao {
 		preparedStatement = null;
 		resultSet = null;
 		List<Marks> marksList=new ArrayList<Marks>();
+		GradesDaoImpl gradesDaoImpl=new GradesDaoImpl();
 		try {
 			connection = DbUtils.getConnection();
 			String sql = "select m.subid,m.marks,s.name,st.regno,st.name from marks as m, subjects as s,students as st where s.name like ? and st.regno=m.sid and m.subid=s.id group by m.sid,s.name";
@@ -219,6 +222,7 @@ public class MarksDaoImpl implements MarksDao {
 				marks.setStudent(students);
 				marks.setSubjects(subjects);
 				marks.setMarks(resultSet.getInt("m.marks"));
+				marks.setGrade(gradesDaoImpl.getGrade(marks.getMarks()));
 				marksList.add(marks);
 			}
 		} catch (Exception e) {

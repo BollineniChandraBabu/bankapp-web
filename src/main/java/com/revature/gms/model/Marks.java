@@ -5,7 +5,7 @@ private int id;
 private Students student;
 private Subjects subjects;
 private int marks;
-
+private String grade;
 public Students getStudent() {
 	return student;
 }
@@ -29,6 +29,12 @@ public int getId() {
 }
 public void setId(int id) {
 	this.id = id;
+}
+public String getGrade() {
+	return grade;
+}
+public void setGrade(String grade) {
+	this.grade = grade;
 }
 
 

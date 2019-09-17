@@ -170,8 +170,9 @@ public int marksValidator() {
 	}
 	return number;
 	}
-public void viewBySubjectCode(int subjectCode) {
+public Object viewBySubjectCode(int subjectCode) {
 	GradesDaoImpl gradesDaoImpl=new GradesDaoImpl();
+
 	marksList = marksDAOImpl.viewBySubjectCode(subjectCode);
 	System.out.println("------------------------------------------------------");
 	for(Marks marks:marksList) {
@@ -184,10 +185,10 @@ public void viewBySubjectCode(int subjectCode) {
 	System.out.println(marks1.getStudent().getId()+"\t"+marks1.getStudent().getName()+"\t"+marks1.getMarks()+"\t"+gradesDaoImpl.getGrade(marks1.getMarks()));
 	}
 	System.out.println("------------------------------------------------------");
-
+return marksList;
 	
 }
-public void viewBySubjectName(String subjectName) {
+public List<Marks> viewBySubjectName(String subjectName) {
 	GradesDaoImpl gradesDaoImpl=new GradesDaoImpl();
 	marksList = marksDAOImpl.viewBySubjectName(subjectName);
 	System.out.println("------------------------------------------------------");
@@ -197,7 +198,7 @@ public void viewBySubjectName(String subjectName) {
 	System.out.println(marks1.getStudent().getId()+"\t"+marks1.getStudent().getName()+"\t\t"+marks1.getSubjects().getId()+"\t    "+marks1.getSubjects().getName()+"\t"+marks1.getMarks()+"\t"+gradesDaoImpl.getGrade(marks1.getMarks()));
 	}
 	System.out.println("------------------------------------------------------");
-
+return marksList;
 	
 }
 public boolean checkSubjectById(int subjectId) {

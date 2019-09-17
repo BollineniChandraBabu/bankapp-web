@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.revature.gms.controller.GradesController;
 import com.revature.gms.controller.MarksController;
+import com.revature.gms.controller.SubjectsController;
 import com.revature.gms.controller.UsersController;
 import com.revature.gms.exception.ServiceException;
 import com.revature.gms.model.Grades;
@@ -71,6 +72,30 @@ public class FrontController extends HttpServlet {
 		        		object = gradesController.viewGrades();
 		        		break;
 		        	}
+		        	case "/FrontController/viewBySubject.do": 
+		        	{
+		        		MarksController marksController = new MarksController();
+		        		try {
+		        		int subject=Integer.parseInt(request.getParameter("subjectdetails"));
+		        		
+	        			object = marksController.viewBySubjectCode(subject);
+		        		}
+		        		catch(NumberFormatException nfe)
+		        		{
+		        			String subject=request.getParameter("subjectdetails");
+			        		
+		        			object = marksController.viewBySubjectName(subject);
+		        		}
+	        			break;
+		        	}
+		        	
+		        	case "/FrontController/viewAvailableSubjects.do": 
+		        	{
+		        		SubjectsController subjectsController=new SubjectsController();
+	        			object = subjectsController.viewSubjects();
+	        			break;
+		        	}
+		        	
 		        	case "/FrontController/login.do": 
 		        	{
 		        		UsersController usersController = new UsersController();

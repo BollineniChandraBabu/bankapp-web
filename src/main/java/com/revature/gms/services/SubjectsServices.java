@@ -12,13 +12,14 @@ public class SubjectsServices {
 		return subjectsDaoImpl.checkSubjectCode(subjectCode);
 	}
 
-	public void viewSubjects() {
+	public List<Subjects> viewSubjects() {
 		List<Subjects> subjectsList=subjectsDaoImpl.viewSubjects();
 		System.out.println("subject code:subject name");
 		for(Subjects subjects:subjectsList) 
 		{
 			System.out.println(subjects.getId() +"\t:\t "+subjects.getName());
 		}
+		return subjectsList;
 	}
 
 	public boolean checkSubjectName(String subjectName) {

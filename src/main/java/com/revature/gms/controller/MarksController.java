@@ -20,13 +20,13 @@ MarksServices marksServices = new MarksServices();
 	public void insertOrUpdate(Marks marks) throws ServiceException {
 		marksServices.insertOrUpdate(marks);
 	}
-	public void viewBySubjectCode(int subjectCode) {
-		marksServices.viewBySubjectCode(subjectCode);
+	public Object viewBySubjectCode(int subjectCode) {
+		return marksServices.viewBySubjectCode(subjectCode);
 	
 		
 	}
-	public void viewBySubjectName(String subjectName) {
-		marksServices.viewBySubjectName(subjectName);
+	public List<Marks> viewBySubjectName(String subjectName) {
+		return marksServices.viewBySubjectName(subjectName);
 		
 	}
 	public void getMarksByGrade(char grade) throws ServiceException {

@@ -1,5 +1,8 @@
 package com.revature.gms.controller;
 
+import java.util.List;
+
+import com.revature.gms.model.Subjects;
 import com.revature.gms.services.SubjectsServices;
 
 public class SubjectsController {
@@ -11,8 +14,8 @@ SubjectsServices subjectsServices=new SubjectsServices();
 		return subjectsServices.checkSubjectCode(subjectCode);
 		
 	}
-	public void viewSubjects() {
-		subjectsServices.viewSubjects();
+	public List<Subjects> viewSubjects() {
+		return subjectsServices.viewSubjects();
 		
 	}
 	public boolean checkSubjectName(String subjectName) {

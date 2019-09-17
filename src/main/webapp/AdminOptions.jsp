@@ -22,7 +22,7 @@
 	<br>
 	<a href="" onclick="viewallmarks()">view all marks</a>
 	<br>
-	<a href="/AddNewEmployee"></a>
+	<a href="" onclick="viewBySubjects()">view by subject</a>
 	<br>
 	<div id="output"></div>
 
