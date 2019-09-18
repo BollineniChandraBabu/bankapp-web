@@ -1,5 +1,7 @@
 package com.revature.gms.controller;
 
+import java.util.List;
+
 import com.revature.gms.exception.ServiceException;
 import com.revature.gms.model.Users;
 import com.revature.gms.services.UsersServices;
@@ -47,12 +49,20 @@ public class UsersController {
 		return result;
 	}
 
-	public void activateAccount() throws ServiceException {
-		userServices.activateAccount();
+	public boolean activateAccount(int eid, String mail, String password) throws ServiceException {
+		return userServices.activateAccount(eid,mail,password);
 	}
 
 		public boolean checkByMailId(String mail) throws ServiceException {
 			return userServices.checkByMailId(mail);
 			
+		}
+
+		public int findIdByMail(String string) {
+			return userServices.findIdByMail(string);
+		}
+
+		public  List<Users> viewAllUsers() {
+			return userServices.viewAllUsers();
 		}
 }

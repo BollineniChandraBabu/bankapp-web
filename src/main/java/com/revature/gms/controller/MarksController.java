@@ -17,8 +17,8 @@ MarksServices marksServices = new MarksServices();
 		return marksServices.viewAllMarks();
 	
 	}
-	public void insertOrUpdate(Marks marks) throws ServiceException {
-		marksServices.insertOrUpdate(marks);
+	public boolean insertOrUpdate(Marks marks) throws ServiceException {
+		return marksServices.insertOrUpdate(marks);
 	}
 	public Object viewBySubjectCode(int subjectCode) {
 		return marksServices.viewBySubjectCode(subjectCode);
@@ -29,8 +29,8 @@ MarksServices marksServices = new MarksServices();
 		return marksServices.viewBySubjectName(subjectName);
 		
 	}
-	public void getMarksByGrade(char grade) throws ServiceException {
-		marksServices.viewMarksByGrade(grade);
+	public List<Marks> getMarksByGrade(char grade) throws ServiceException {
+		return marksServices.viewMarksByGrade(grade);
 		
 	}
 	public boolean checkSubjectById(int subjectId) {

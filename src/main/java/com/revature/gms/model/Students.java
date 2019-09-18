@@ -8,7 +8,7 @@ public class Students {
 	private String name;
 	private String fatherName;
 	private Departments department;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	private String Address;
 	private boolean active;
 	public int getId() {
@@ -36,10 +36,10 @@ public class Students {
 		this.fatherName = fatherName;
 	}
 	
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getAddress() {

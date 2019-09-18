@@ -41,10 +41,11 @@ Scanner scanner=new Scanner(System.in);
 		return marksList;
 
 	}
-	public void viewMarksByGrade(char grade) throws ServiceException {
+	public List<Marks> viewMarksByGrade(char grade) throws ServiceException {
 		try {
 			List<Students> studentsList=studentServices.getStudents();
 			GradesDaoImpl gradesDaoImpl=new GradesDaoImpl();
+			List<Marks> marksList;
 			System.out.println("-------------------------------------------------------------------------------");
 			for(Students students:studentsList)
 			{
@@ -52,7 +53,7 @@ Scanner scanner=new Scanner(System.in);
 				String grade1=gradesDaoImpl.getGrade(average);
 				if(grade1.trim().charAt(0)==grade)
 				{
-					List<Marks> marksList=marksDAOImpl.getMarksById(students.getRegistrationNumber());
+					marksList=marksDAOImpl.getMarksById(students.getRegistrationNumber());
 					for(Marks marks:marksList)
 					{
 						System.out.print("\nStudent Id :"+marks.getStudent().getRegistrationNumber()+"  Student Name :"+marks.getStudent().getName()+"\n");
@@ -71,6 +72,7 @@ Scanner scanner=new Scanner(System.in);
 			throw new ServiceException("Unable to View" +e);
 			
 		}
+		return marksList;
 	}
 	public Marks checkAvailability(int studentId,int subjectId) throws ServiceException {
 			return marksDAOImpl.checkAvailability(studentId,subjectId);
@@ -79,50 +81,10 @@ Scanner scanner=new Scanner(System.in);
 		boolean result=false;
 		try 
 		{
-			Marks marks1=checkAvailability(marks.getStudent().getRegistrationNumber(), marks.getSubjects().getId());
-			if(marks1.getStudent().getRegistrationNumber()!=0)
-			{
-				System.out.println("marks available for Id:"+marks.getStudent().getRegistrationNumber());
-				System.out.println("select one service....\n1.update marks\t2.view marks\t0.exit");
-				int choice;
-				while(true) {
-					choice=getNumber();
-					if(choice>=0 && choice<=2)
-					{break;}
-					else 
-					{
-						System.out.println("enter correct choice.....");
-					}
-				}
-				switch(choice) 
-				{
-				case 1:
-				{
-					result=marksDAOImpl.updateMarks(marks);
-					if(result) 
-					{
-						System.out.println("successfully updated marks for ID:"+marks.getStudent().getRegistrationNumber());
-					}
-					else { System.out.println("unable to update marks for Id:"+marks.getStudent().getRegistrationNumber()); }
-					break;
-				}
-				case 2:
-				{
-					
-					break;
-				}
-				case 0:{break;}
-				}
-			}
-			else
-			{
-				result=marksDAOImpl.insertMarks(marks);
-				if(result)
-				{ System.out.println("marks successfully inserted for Id :"+marks.getStudent().getRegistrationNumber()); }
-				else { System.out.println("some error occured....unable to insert marks...."); }
-			}
+			result=marksDAOImpl.updateMarks(marks);
 		}
 		catch (DBException e) {
+			result=marksDAOImpl.insertMarks(marks);
 			throw new ServiceException("Unable to View" +e);
 		}
 		return result;

@@ -17,14 +17,14 @@
     <div class="col-sm">
     <jsp:include page="AdminOptions.jsp"></jsp:include>
     </div>
-     <div class="col-sm" id="viewdetails" name="viewdetails">
+     <div class="col-sm" id="viewdetails">
     
     </div>
     
     
     </div>
 </div>
-
+<jsp:include page="footer.html"></jsp:include>
   
 		
 </body>

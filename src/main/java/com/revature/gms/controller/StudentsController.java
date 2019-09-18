@@ -10,5 +10,11 @@ StudentServices studentServices=new StudentServices();
 		
 		
 	}
+	public int insert(Students students) {
+		return studentServices.insert(students);
+	}
+	public Object viewStudents() {
+		return studentServices.getStudents();
+	}
 
 }

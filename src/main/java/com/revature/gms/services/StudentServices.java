@@ -16,4 +16,13 @@ public class StudentServices {
 		return studentsDaoImpl.checkStudentById(studentId);
 	}
 
+	public  int insert(Students students) {
+		return studentsDaoImpl.insert(students);
+	}
+
+	public Object viewStudents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.revature.gms.services;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.gms.dao.UsersDao;
@@ -14,7 +15,7 @@ import com.revature.gms.validator.UsersValidator;
 
 public class UsersServices {
 	UsersValidator usersValidator=new UsersValidator();
-	UsersDao userDAOImpl = new UsersDaoImpl();
+	UsersDaoImpl userDAOImpl = new UsersDaoImpl();
 	MarksServices marksServices=new MarksServices();
 	Scanner scanner=new Scanner(System.in);
 Users users=new Users();
@@ -97,53 +98,17 @@ Users users=new Users();
 	}
 	
 	
-	public void activateAccount() throws ServiceException {
-		boolean result =false;
-		String password = null,confirmPassword = null;
-		System.out.println("enter your id...");
-		int id=marksServices.getNumber();
-		String email="";
-		System.out.println("please enter your email id...");
-		while(result!=true) {
-			email=scanner.next();
-		result = usersValidator.emailValidator(email);
-		if(result==false) { System.out.println("please enter valid email id....");}
-		}
-		result =false;
+	public boolean activateAccount(int eid, String mail, String password) throws ServiceException {
 		
-		
-		
-		while(result!=true) 
-		{
-		System.out.println("enter your new password...");
-		password=scanner.next();
-		System.out.println("re-enter your new password...");
-		confirmPassword=scanner.next();
-		if(!password.equals(confirmPassword))
-		{
-			System.out.println("password and confirm password should be same.....");
-		}
-		else {
-		break;}
-		}
-		
-		if(password.equals(confirmPassword)) 
-		{
-		boolean updateResult=userDAOImpl.activateAccount(email,id,password);
-		if(updateResult==true) 
-		{
-			System.out.println("successfully activated....");
-			Login login=new Login();
-			login.login();
-		}
-		else 
-		{
-			System.out.println("check your details unable to activate....");
-		}
-		
-		}
-		
+		return userDAOImpl.activateAccount(mail,eid,password);
+	}
 
+	public int findIdByMail(String string) {
+		return userDAOImpl.findIdByMail(string);
+	}
+
+	public  List<Users> viewAllUsers() {
+		return userDAOImpl.viewAllUsers();
 	}
 	
 }
