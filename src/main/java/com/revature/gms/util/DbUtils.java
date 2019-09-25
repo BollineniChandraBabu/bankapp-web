@@ -12,9 +12,9 @@ public class DbUtils {
 	public static Connection getConnection()
 		{
 		String driverClassName = "com.mysql.cj.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/training_db";
-		String username = "root";
-		String password = "root";
+       String url = "jdbc:mysql://trainingdb.ck1ayq0lncmp.ap-south-1.rds.amazonaws.com/chandrababu_db";
+       String username = "chandrababu";
+       String password = "chandrababu";
 		Connection conn=null;
 		
 		try 
