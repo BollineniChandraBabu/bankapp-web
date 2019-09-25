@@ -73,14 +73,10 @@ var url ="http://localhost:8080/web/FrontController/login.do?"+ formData;
 							&nbsp
 							<button type="reset" class="btn btn-primary btn-xs">clear</button>
 						</div>
-						<p class="hint-text">
-							<a href="#">Forgot Password?</a>
-						</p>
+
 					</form>
 				</div>
-				<div class="modal-footer">
-					Don't have an account? <a href="register.jsp">Create one</a>
-				</div>
+
 			</div>
 		</div>
 	</div>
